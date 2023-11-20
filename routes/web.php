@@ -20,9 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')
-    // ->middleware(['checkAdmin'])
-    ->group(function(){
+Route::prefix('dashboard')->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
 });
 
