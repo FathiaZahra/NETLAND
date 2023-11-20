@@ -294,11 +294,7 @@ body {
       </header>
   </div>
 </nav>
-<<<<<<< HEAD
-<div class="container mt-4" >@yield('content') @include('layout.flash-message')</div>
-=======
 <div class="container mt-3">@yield('content')@include('layout.flash-message')</div>
->>>>>>> 8af991405a3fd8901b4b305e79b3ea842ee6820b
   </body>
   <script>
     const container = document.querySelector(".container");
