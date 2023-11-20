@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TicketingStaff extends Model
 {
     use HasFactory;
-    protected $table = 'ticketingstaff';
-    protected $fillable = ['nama_ticketingstaff'];
+    protected $table = 'ticketing_staff';
+    protected $fillable = ['nama_ticketingstaff', ''];
     protected $primaryKey = 'id_ticketingstaff';
     public $timestamps = false;
 

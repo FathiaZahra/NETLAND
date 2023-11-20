@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,14 +24,19 @@ Route::prefix('dashboard')
     // ->middleware(['checkAdmin'])
     ->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
-    // Route::get('/perusahaan/edit',[PerusahaanController::class,'edit'])->name('editPerusahaan');
-    // Route::post('/perusahaan/simpan',[PerusahaanController::class,'store'])->name('simpanPerusahaan');
-    // Route::get('/cabang',[CabangController::class,'index'])->name('cabangIndex');
-    // Route::get('/cabang/tambah',[CabangController::class,'create'])->name('tambahCabang');
-    // Route::post('/cabang/simpan',[CabangController::class,'store'])->name('simpanCabang');
-    // Route::get('/cabang/edit/{id}',[CabangController::class,'edit']);
-    // Route::post('/cabang/edit/simpan',[CabangController::class,'store'])->name('simpanEditCabang');
-    // Route::delete('/cabang/hapus',[CabangController::class,'destroy'])->name('hapusCabang');
+});
+
+   // TIKET
+   Route::prefix('dashboard')
+//    ->middleware(['akses:admin,operator'])
+   ->group(function () {
+    Route::get('/ticket', [TicketController::class, 'index']);
+    Route::get('/ticket/detail/{id}',[TicketController::class,'detail']);
+    Route::get('/ticket/tambah',[TicketController::class,'create'])->name('tambahTicket');
+    Route::post('/ticket/simpan',[TicketController::class,'store'])->name('simpanTicket');
+    Route::get('/ticket/edit/{id}',[TicketController::class,'edit']);
+    Route::post('/ticket/edit/simpan',[TicketController::class,'update'])->name('simpanEditTicket');
+    Route::delete('/ticket/hapus',[TicketController::class,'destroy'])->name('hapusTicket');
 });
 
 

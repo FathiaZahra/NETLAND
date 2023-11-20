@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Website Title</title>
@@ -84,7 +85,7 @@ body {
 .header__content--flow > * {
     flex-grow: 1;
     height: var(--header);
-    width: calc((45rem - var(--full-width) - (var(--padding) * 2)) * 999);
+    width: 100px;
 }
 
 .header-content--left {
@@ -155,7 +156,7 @@ body {
 
 .header-content--right {
     position: relative;
-    left: -30px;
+    left: -150px;
     flex-grow: 999;
 }
 
@@ -220,17 +221,18 @@ body {
         right: 0;
         margin-inline: var(--space-1);
         top: calc(50% + var(--space-1) * 2);
-        gap: var(--space-05) 0;
-        position: fixed;
-        width: 10em;
+        /* gap: var(--space-05) 0; */
+        /* position: fixed; */
+        /* width: 10rem; */
         background-color: #fff;
         border-radius: var(--bd-radius);
         border: 1px solid var(--border-clr);
         padding-block: 0.5rem;
-        grid-auto-flow: row;
+        /* grid-auto-flow: row; */
         box-shadow: var(--shadow);
         visibility: hidden;
         opacity: 0;
+        overflow: auto;
     }
 
     .nav__list[aria-expanded="true"] {
@@ -278,7 +280,7 @@ body {
                             <a class="nav__link" href="#">Akomodasi</a>
                         </li>
                           <li class="list-item">
-                              <a class="nav__link" href="#">Tiket</a>
+                              <a class="nav__link" href="http://127.0.0.1:8000/dashboard/ticket">Tiket</a>
                           </li>
                           <li class="list-item">
                               <a class="nav__link" href="#">sewa</a>
@@ -293,6 +295,7 @@ body {
       </header>
   </div>
 </nav>
+<div class="container mt-4" >@yield('content') @include('layout.flash-message')</div>
   </body>
   <script>
     const container = document.querySelector(".container");
