@@ -19,18 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')
-    // ->middleware(['checkAdmin'])
-    ->group(function(){
+Route::prefix('dashboard')->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
-    // Route::get('/perusahaan/edit',[PerusahaanController::class,'edit'])->name('editPerusahaan');
-    // Route::post('/perusahaan/simpan',[PerusahaanController::class,'store'])->name('simpanPerusahaan');
-    // Route::get('/cabang',[CabangController::class,'index'])->name('cabangIndex');
-    // Route::get('/cabang/tambah',[CabangController::class,'create'])->name('tambahCabang');
-    // Route::post('/cabang/simpan',[CabangController::class,'store'])->name('simpanCabang');
-    // Route::get('/cabang/edit/{id}',[CabangController::class,'edit']);
-    // Route::post('/cabang/edit/simpan',[CabangController::class,'store'])->name('simpanEditCabang');
-    // Route::delete('/cabang/hapus',[CabangController::class,'destroy'])->name('hapusCabang');
+    Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);    
+    Route::get('/peminjaman/tambah',[PeminjamanController::class,'create'])->name('tambahPeminjaman');
+    Route::post('/peminjaman/simpan',[PeminjamanController::class,'store'])->name('simpanPeminjaman');
+    Route::get('/peminjaman/edit/{id}',[PeminjamanController::class,'edit'])->name('editPeminjaman');
+    Route::post('/peminjaman/edit/simpan',[PeminjamanController::class,'update'])->name('simpanEditPeminjaman');
+    Route::delete('/peminjaman/hapus',[PeminjamanController::class,'destroy'])->name('hapusPeminjaman');
 });
 
 

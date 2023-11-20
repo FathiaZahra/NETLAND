@@ -17,7 +17,7 @@
             .vh-200 {
                 position: relative;
                 background: url('../foto/bg1.png') center/cover no-repeat; /* Sesuaikan dengan path dan nama file gambar Anda */
-                height: 900px; /* Sesuaikan tinggi sesuai kebutuhan Anda */
+                height: max-content; /* Sesuaikan tinggi sesuai kebutuhan Anda */
              }
 
             .container {
@@ -59,19 +59,19 @@
     </head>
     <body>
         <section class="vh-200">
-            <div class="container py-5 h-200">
+            <div class="container h-200">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+                    <div class="card-body p-5  text-center">
                 <form method="POST">
                       <h3>Sign in</h3>
                         <img src="../foto/tourist.jpg" class="login">
                       <div class="form-outline mb-4">
-                        <label class="form-label" for="typeEmailX-2">Username</label>
+                        <label class="form-label"  for="typeEmailX-2">Username</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                            <input type="email" id="typeEmailX-2" placeholder="masukkan username" class="form-control form-control-lg" />
                         </div>
                       </div>
           

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username',50)->nullable(false);
             $table->text('password')->nullable(false);
             $table->enum('role', ['super_admin','pengelola','staff_ticketing','staff_penyewaan']);
-            $table->text('file');
+            $table->text('file')->nullable(true);
             $table->timestamps(false);
             
         });
