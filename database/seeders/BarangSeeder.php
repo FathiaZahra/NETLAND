@@ -26,7 +26,7 @@ class BarangSeeder extends Seeder
 
         // Melakukan looping data dengan foreach
         foreach ($userData as $user => $val) {
-            Barang::create($val);
+        Barang::create($val);
         }
     }
 }
