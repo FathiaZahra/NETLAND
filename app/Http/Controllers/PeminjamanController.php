@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -17,6 +18,14 @@ class PeminjamanController extends Controller
         // dd($data);
         return view('peminjaman.index', $data);
     }
+
+    // public function cetak_pdf()
+    // {
+    // 	$barang = Barang::all();
+ 
+    // 	$pdf = PDF::loadview('peminjaman_pdf',['barang'=>$barang]);
+    // 	return $pdf->download('laporan-barang-pdf');
+    // }
 
     public function create()
     {

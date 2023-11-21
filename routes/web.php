@@ -20,13 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')->group(function(){
-    Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
-});
+
 
    // TIKET
    Route::prefix('dashboard')
-//    ->middleware(['akses:admin,operator'])
+//    ->middleware(['akses:ticket'])
    ->group(function () {
     Route::get('/ticket', [TicketController::class, 'index']);
     Route::get('/ticket/detail/{id}',[TicketController::class,'detail']);
@@ -35,13 +33,21 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/ticket/edit/{id}',[TicketController::class,'edit']);
     Route::post('/ticket/edit/simpan',[TicketController::class,'update'])->name('simpanEditTicket');
     Route::delete('/ticket/hapus',[TicketController::class,'destroy'])->name('hapusTicket');
-
+});
+    Route::prefix('dashboard')
+//    ->middleware(['akses:staff_penyewaan'])
+   ->group(function () {
+    Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
     Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);    
     Route::get('/peminjaman/tambah',[PeminjamanController::class,'create'])->name('tambahPeminjaman');
     Route::post('/peminjaman/simpan',[PeminjamanController::class,'store'])->name('simpanPeminjaman');
     Route::get('/peminjaman/edit/{id}',[PeminjamanController::class,'edit'])->name('editPeminjaman');
     Route::post('/peminjaman/edit/simpan',[PeminjamanController::class,'update'])->name('simpanEditPeminjaman');
     Route::delete('/peminjaman/hapus',[PeminjamanController::class,'destroy'])->name('hapusPeminjaman');
+    Route::get('/peminjaman/cetak_pdf', 'PeminjamanController@cetak_pdf');
+
+
+
 });
 
 

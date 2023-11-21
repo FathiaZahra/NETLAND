@@ -260,6 +260,7 @@ body {
                       <img src="/../foto/logo.png">
                       <span class="logo-text">NETLAND</span>
                   </a>
+                  @include('layout.flash-message')
                   <button class="nav-toggle">
                       <span class="toggle--icon"></span>
                   </button>
@@ -282,19 +283,26 @@ body {
                           <li class="list-item">
                               <a class="nav__link" href="http://127.0.0.1:8000/dashboard/peminjaman">Sewa</a>
                           </li>
-                          <li class="list-item">
+                        {{-- <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li> --}}
+                        <li class="list-item">
                               <a style="margin-left: 70px;" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
                             </a>
-                          </li>
-                      </ul>
+                        </li>
+                      </ul><br>
+                      <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                   </nav>
               </section>
           </div>
       </header>
   </div>
 </nav>
-<div class="container mt-3">@yield('content')@include('layout.flash-message')</div>
+<div class="container mt-3">@yield('content')</div>
   </body>
   <script>
     const container = document.querySelector(".container");

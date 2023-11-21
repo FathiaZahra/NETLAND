@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Akun;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,7 +23,7 @@ class AkunSeeder extends Seeder
             [
                 'username' => 'pengelola',
                 'role' => 'pengelola',
-                'password' => Hash::make('pengelola')
+                'password' => Hash::make('git')
             ],
             [
                 'username' => 'staff_ticketing',

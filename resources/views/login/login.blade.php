@@ -64,14 +64,15 @@
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5  text-center">
-                <form method="POST">
+                <form method="POST" action="login/check">
+                    @csrf
                       <h3>Sign in</h3>
                         <img src="../foto/tourist.jpg" class="login">
                       <div class="form-outline mb-4">
                         <label class="form-label"  for="typeEmailX-2">Username</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="email" id="typeEmailX-2" placeholder="masukkan username" class="form-control form-control-lg" />
+                            <input type="text" id="typeEmailX-2" name="username"  placeholder="masukkan username" class="form-control form-control-lg" />
                         </div>
                       </div>
           
@@ -79,7 +80,7 @@
                         <label class="form-label" for="typePasswordX-2">Password</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                            <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" />
                         </div>
                       </div>
           
