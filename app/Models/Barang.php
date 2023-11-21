@@ -9,11 +9,11 @@ class Barang extends Model
 {
     use HasFactory;
     protected $table = 'barang';
-    protected $fillable = ['nama_barang','harga_barang','stok_barang','pembayaran_sewabarang'];
+    protected $fillable = ['nama_barang','harga_barang','stok_barang','pembayaran_sewabarang','file'];
     protected $primaryKey = 'id_barang';
     public $timestamps = false;
 
-    public function barang(){
-        return $this->hasMany(barang::class, 'id_barang');
-    }
+    // public function barang(){
+    //     return $this->hasMany(barang::class, 'id_barang');
+    // }
 }

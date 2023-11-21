@@ -4,8 +4,7 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\PeminjamanController;
-use App\Models\Akomodasi;
-use App\Models\Informasi;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,18 +22,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')
-    // ->middleware(['checkAdmin'])
-    ->group(function(){
+
+   // TIKET
+   Route::prefix('dashboard')
+//    ->middleware(['akses:admin,operator'])
+   ->group(function () {
+    Route::get('/ticket', [TicketController::class, 'index']);
+    Route::get('/ticket/detail/{id}',[TicketController::class,'detail']);
+    Route::get('/ticket/tambah',[TicketController::class,'create'])->name('tambahTicket');
+    Route::post('/ticket/simpan',[TicketController::class,'store'])->name('simpanTicket');
+    Route::get('/ticket/edit/{id}',[TicketController::class,'edit']);
+    Route::post('/ticket/edit/simpan',[TicketController::class,'update'])->name('simpanEditTicket');
+    Route::delete('/ticket/hapus',[TicketController::class,'destroy'])->name('hapusTicket');
+});
+
+    Route::prefix('dashboard')->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
-    // Route::get('/perusahaan/edit',[PerusahaanController::class,'edit'])->name('editPerusahaan');
-    // Route::post('/perusahaan/simpan',[PerusahaanController::class,'store'])->name('simpanPerusahaan');
-    // Route::get('/cabang',[CabangController::class,'index'])->name('cabangIndex');
-    // Route::get('/cabang/tambah',[CabangController::class,'create'])->name('tambahCabang');
-    // Route::post('/cabang/simpan',[CabangController::class,'store'])->name('simpanCabang');
-    // Route::get('/cabang/edit/{id}',[CabangController::class,'edit']);
-    // Route::post('/cabang/edit/simpan',[CabangController::class,'store'])->name('simpanEditCabang');
-    // Route::delete('/cabang/hapus',[CabangController::class,'destroy'])->name('hapusCabang');
+    Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);    
+    Route::get('/peminjaman/tambah',[PeminjamanController::class,'create'])->name('tambahPeminjaman');
+    Route::post('/peminjaman/simpan',[PeminjamanController::class,'store'])->name('simpanPeminjaman');
+    Route::get('/peminjaman/edit/{id}',[PeminjamanController::class,'edit'])->name('editPeminjaman');
+    Route::post('/peminjaman/edit/simpan',[PeminjamanController::class,'update'])->name('simpanEditPeminjaman');
+    Route::delete('/peminjaman/hapus',[PeminjamanController::class,'destroy'])->name('hapusPeminjaman');
 });
 
 
@@ -59,10 +68,10 @@ Route::prefix('dashboard')->group(function(){
     Route::delete('/akomodasi/hapus',[AkomodasiController::class,'destroy']);
 });
 
-// Route::prefix('login')->group(function(){
-//     Route::get('/',[AkunController::class,'index'])->name('login');
-//     // Route::get('login',[AuthController::class,'index'])->name('login');
-//     Route::post('/check',[AkunController::class,'check']);
-//     Route::get('/logout',[AkunController::class,'logout'])->name('logout');
+Route::prefix('login')->group(function(){
+    Route::get('/',[AkunController::class,'index'])->name('login');
+    // Route::get('login',[AuthController::class,'index'])->name('login');
+    Route::post('/check',[AkunController::class,'check']);
+    Route::get('/logout',[AkunController::class,'logout'])->name('logout');
 
-// });
+});
