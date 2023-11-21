@@ -9,7 +9,7 @@ class Akomodasi extends Model
 {
     use HasFactory;
     protected $table = 'akomodasi';
-    protected $fillable = ['nama_akomodasi','isi_akomodasi','file'];
+    protected $fillable = ['id_pengelola','nama_akomodasi','isi_akomodasi','file'];
     protected $primaryKey = 'id_akomodasi';
     public $timestamps = false;
 

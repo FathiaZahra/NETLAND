@@ -15,16 +15,16 @@ return new class extends Migration
             // $table->id();
             // $table->timestamps();
             $table->integer('id_akomodasi',10)->autoIncrement();
-            $table->integer('id_pengelola')->nullable(false);
+            // $table->integer('id_pengelola')->nullable(false);
             $table->string('nama_akomodasi',225)->nullable(false);
             $table->string('isi_akomodasi',225)->nullable(false);
-            $table->text('file');
+            $table->text('file')->nullable(true);
             $table->timestamps(false);
             
             // Foreign Key
-            $table->foreign('id_pengelola')
-                    ->references('id_pengelola')->on('pengelola')
-                    ->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_pengelola')
+            //         ->references('id_pengelola')->on('pengelola')
+            //         ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

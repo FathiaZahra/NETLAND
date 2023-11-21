@@ -19,7 +19,7 @@ class staffPenyewaan
     public function handle(Request $request, Closure $next): Response
     {
          // return $next($request);
-         if(Akun::user() && Akun::user()->role == 'staffpenyewaan'):
+         if(Akun::user() && Akun::user()->role == 'staff_penyewaan'):
             return $next($request);
         else:
             return redirect()->to('/login');

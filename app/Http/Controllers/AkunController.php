@@ -23,7 +23,7 @@ class AkunController extends Controller
         endif;
     }
 
-    public function check(Request $request){
+    public function check(Akun $akun, Request $request){
         $akun = $request->validate(
             [
                 'username' => ['required'],
@@ -33,7 +33,7 @@ class AkunController extends Controller
         if(Akun::attempt($akun)){
             $request->session()->regenerate();
             if(Akun::user()->role == 'staff_penyewaan'):
-                return redirect()->to('/dashboard');
+                return redirect()->to('/dashboard/peminjaman');
             else:
                 return redirect()->to('/peminjaman/dashboard');
             endif;

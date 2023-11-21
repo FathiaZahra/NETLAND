@@ -200,7 +200,7 @@ body {
 .nav__link:hover:not(:focus) {
     border-bottom: 2px solid currentColor;
 }
-.nav__list:hover .nav__link:not(:focus, :hover) {
+.nav_list:hover .nav_link:not(:focus, :hover) {
     color: var(--text-accent);
 }
 
@@ -272,10 +272,10 @@ body {
                               <a class="nav__link" href="#">Beranda</a>
                           </li>
                           <li class="list-item">
-                              <a class="nav__link" href="#">Informasi</a>
+                              <a class="nav__link" href="http://127.0.0.1:8000/dashboard/informasi">Informasi</a>
                           </li>
                           <li class="list-item">
-                            <a class="nav__link" href="#">Akomodasi</a>
+                            <a class="nav__link" href="http://127.0.0.1:8000/dashboard/akomodasi">Akomodasi</a>
                         </li>
                           <li class="list-item">
                               <a class="nav__link" href="http://127.0.0.1:8000/dashboard/ticket">Tiket</a>
