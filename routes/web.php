@@ -23,9 +23,10 @@ Route::get('/', function () {
 });
 
 
+
    // TIKET
    Route::prefix('dashboard')
-//    ->middleware(['akses:admin,operator'])
+//    ->middleware(['akses:ticket'])
    ->group(function () {
     Route::get('/ticket', [TicketController::class, 'index']);
     Route::get('/ticket/detail/{id}',[TicketController::class,'detail']);
@@ -36,9 +37,13 @@ Route::get('/', function () {
     Route::delete('/ticket/hapus',[TicketController::class,'destroy'])->name('hapusTicket');
 });
 
-    Route::prefix('dashboard')->group(function(){
+
+    Route::prefix('dashboard')
+    // ->middleware(['akses:staff_penyewaan'])
+    ->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
-    Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);    
+    Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);
+    Route::get('/unduh',[PeminjamanController::class,'unduhPdf']);    
     Route::get('/peminjaman/tambah',[PeminjamanController::class,'create'])->name('tambahPeminjaman');
     Route::post('/peminjaman/simpan',[PeminjamanController::class,'store'])->name('simpanPeminjaman');
     Route::get('/peminjaman/edit/{id}',[PeminjamanController::class,'edit'])->name('editPeminjaman');
@@ -47,7 +52,9 @@ Route::get('/', function () {
 });
 
 
-Route::prefix('dashboard')->group(function(){
+Route::prefix('dashboard')
+// ->middleware(['akses:pengelola'])
+->group(function(){
     Route::get('/informasi',[InformasiController::class,'index']);
     Route::get('/informasi/detail/{id}',[InformasiController::class,'detail']);
     Route::get('/informasi/tambah',[InformasiController::class,'create']);
@@ -71,7 +78,7 @@ Route::prefix('dashboard')->group(function(){
 Route::prefix('login')->group(function(){
     Route::get('/',[AkunController::class,'index'])->name('login');
     // Route::get('login',[AuthController::class,'index'])->name('login');
-    Route::post('/check',[AkunController::class,'check']);
+    // Route::post('/check',[AkunController::class,'check']);
     Route::get('/logout',[AkunController::class,'logout'])->name('logout');
 
 });

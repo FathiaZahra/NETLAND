@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-mr-10">
                             <a href="akomodasi/tambah">
-                                <button style="margin-left: 960px;" class="btn btn-success my-3">Tambah Akomodasi</button>
+                                <button style="margin-left: 1000px;" class="btn btn-success my-3">Tambah Akomodasi</button>
                             </a>
                         </div>
                         <table class="table table-hover table-bordered DataTable">

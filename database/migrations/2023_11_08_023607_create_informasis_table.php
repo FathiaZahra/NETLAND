@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('informasi', function (Blueprint $table) {
             $table->integer('id_informasi',10)->autoIncrement();
-            $table->integer('id_pengelola')->nullable(false);
+            // $table->integer('id_pengelola')->nullable(false);
             $table->string('nama_informasi',225)->nullable(false);
             $table->text('isi_informasi')->nullable(false);
-            $table->text('file');
+            $table->text('file')->nullable(true);
             $table->timestamps(false);
 
             //foreign key
-            $table->foreign('id_pengelola')
-                    ->references('id_pengelola')->on('pengelola')
-                    ->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_pengelola')
+            //         ->references('id_pengelola')->on('pengelola')
+            //         ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

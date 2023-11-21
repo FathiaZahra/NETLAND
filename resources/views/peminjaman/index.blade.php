@@ -19,7 +19,7 @@
                                     Tambah Penyewaan
                                 </button>
                             </a>
-
+                            <a href="/dashboard/unduh" class="btn btn-primary" target="_blank">CETAK PDF</a>
                         </div>
                         <p>
                             <hr>

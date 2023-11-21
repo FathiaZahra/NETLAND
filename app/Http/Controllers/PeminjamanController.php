@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -16,6 +17,13 @@ class PeminjamanController extends Controller
         ];
         // dd($data);
         return view('peminjaman.index', $data);
+    }
+
+    public function unduhPdf(Barang $barang)
+    {
+        $barang = Barang::all();
+    	$pdf = PDF::loadview('peminjaman.unduh',['barang'=>$barang]);
+    	return $pdf->download('laporan-barang.pdf');
     }
 
     public function create()

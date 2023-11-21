@@ -23,7 +23,7 @@ class AkunSeeder extends Seeder
             [
                 'username' => 'pengelola',
                 'role' => 'pengelola',
-                'password' => Hash::make('pengelola')
+                'password' => Hash::make('git')
             ],
             [
                 'username' => 'staff_ticketing',

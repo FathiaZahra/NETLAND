@@ -28,7 +28,7 @@ class InformasiController extends Controller
             'file' => 'required|file',
         ]);
 
-        $data['id_pengelola'] = 1;
+        // $data['id_pengelola'] = 1;
 
         if ($request->hasFile('file')) {
             $foto_file = $request->file('file');
