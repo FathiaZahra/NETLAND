@@ -40,7 +40,7 @@
                                             </tbody>
                                         </table>
                                         <div class="col-md-4 mt-3">
-                                            <a href="#" onclick="window.history.back();" class="btn btn-success">KEMBALI</a>
+                                            <a href="#" onclick="window.history.back();" style="margin-left: 10px;" class="btn btn-success">KEMBALI</a>
                                         </div>
                                     </div>
 
