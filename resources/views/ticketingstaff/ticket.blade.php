@@ -59,6 +59,22 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Log Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($log as $r)
+                                    <tr>
+                                        <td>{{ $r->log }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="card-footer">
