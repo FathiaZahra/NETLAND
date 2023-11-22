@@ -12,34 +12,34 @@ class AkunController extends Controller
     public function index(Akun $akun)
     {
         return view('login.login');
-        if(!akun::query()):
-            return view('login.login');
-        else:
-            if(Akun::user()->role == 'staff_penyewaan'):
-                return redirect()->to('/dashboard');
-            else:
-                return redirect()->to('/peminjaman/dashboard');
-            endif;
-        endif;
     }
 
-    public function check(Akun $akun, Request $request){
-        $akun = $request->validate(
+    public function login(Request $request)
+    {
+        $validateData = $request->validate(
             [
                 'username' => ['required'],
                 'password' => ['required'],
-            ]
-            );
-        if(Akun::attempt($akun)){
-            $request->session()->regenerate();
-            if(Akun::user()->role == 'staff_penyewaan'):
-                return redirect()->to('/dashboard/peminjaman');
-            else:
-                return redirect()->to('/peminjaman/dashboard');
-            endif;
-        }
-        else{
-            return redirect()->to('/peminjaman/dashboard');
+            ],
+            [
+                'username.required' => 'Username harus diisi',
+                'password.required' => 'Password harus diisi',
+            ],
+        );
+
+        $credentials = [
+                'username' => $validateData['username'],
+                'password' => $validateData['password'],
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            // Session::regenerate();
+            if ($user->role == 'staff_penyewaan') {
+                return redirect('dashboard/peminjaman');
+            } elseif ($user->role == 'staff_ticketing') {
+                return redirect('dashboard/ticket');
+            }
         }
     }
     public function logout()

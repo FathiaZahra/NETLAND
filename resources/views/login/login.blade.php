@@ -64,8 +64,9 @@
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5  text-center">
-                <form method="get" action="dashboard/peminjaman">
-                    @csrf
+                <form method="get" action="post">
+                    {{-- {{ csrf_field }} --}}
+                    {{-- @csrf --}}
                       <h3>Sign in</h3>
                         <img src="../foto/tourist.jpg" class="login">
                       <div class="form-outline mb-4">

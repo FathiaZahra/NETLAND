@@ -264,6 +264,7 @@ body {
               <section class="header-content--right">
                   <nav class="header-nav" role="navigation">
                       <ul class="nav__list" aria-expanded="false">
+
                           <li class="list-item">
                               <a class="nav__link" href="#">Beranda</a>
                           </li>
@@ -288,10 +289,6 @@ body {
                             </a>
                         </li>
                       </ul><br>
-                      <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                   </nav>
               </section>
           </div>
@@ -302,6 +299,9 @@ body {
                   <button class="nav-toggle">
                       <span class="toggle--icon"></span>
                   </button></div>
+    <button class="nav-toggle">
+        <span class="toggle--icon"></span>
+    </button></div>
   </body>
   <script>
     const container = document.querySelector(".container");
