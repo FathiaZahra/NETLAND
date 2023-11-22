@@ -5,6 +5,7 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\TicketController;
+use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +59,7 @@ Route::prefix('dashboard')
 ->group(function(){
     Route::get('/informasi',[InformasiController::class,'index']);
     Route::get('/informasi/detail/{id}',[InformasiController::class,'detail']);
+    Route::get('informasi/unduh',[InformasiController::class,'unduhPdf']); 
     Route::get('/informasi/tambah',[InformasiController::class,'create']);
     Route::post('/informasi/simpan',[InformasiController::class,'store']);
     Route::get('/informasi/edit/{id}',[InformasiController::class,'edit']);
@@ -69,6 +71,7 @@ Route::prefix('dashboard')
 Route::prefix('dashboard')->group(function(){
     Route::get('/akomodasi',[AkomodasiController::class,'index']);
     Route::get('/akomodasi/detail/{id}',[AkomodasiController::class,'detail']);
+    Route::get('/akomodasi/unduh',[AkomodasiController::class,'unduhPdf']); 
     Route::get('/akomodasi/tambah',[AkomodasiController::class,'create']);
     Route::post('/akomodasi/simpan',[AkomodasiController::class,'store']);
     Route::get('/akomodasi/edit/{id}',[AkomodasiController::class,'edit']);

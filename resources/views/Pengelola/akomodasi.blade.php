@@ -2,20 +2,30 @@
 @section('title', 'Peminjaman')
 @section('content')
     <div>
-        <div class="col-md-12">
-        <span class="h1">
+            <div class="col-md-12">
+            <span class="h1">
                         Data Akomodasi
-                    </span>
-            <div>
+            </span>
+                <div>
                 <div class="card-header">
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-mr-10">
-                            <a href="akomodasi/tambah">
-                                <button style="margin-left: 1000px;" class="btn btn-success my-3">Tambah Akomodasi</button>
-                            </a>
+                        <br>
+                        <div class="" style="float: right;">
+                                <a href="/dashboard/akomodasi/unduh" class="btn btn-primary" target="_blank">CETAK PDF</a>
+                                <a href="akomodasi/tambah" class="">
+                                    <button style="margin-left: 10px" class="btn btn-success">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="color: #fff;" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+                                        Tambah Akomodasi
+                                    </button>
+                                    </a>
                         </div>
+                        </div>
+                        <p>
+                            
+                        <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
@@ -47,6 +57,20 @@
                                             </button>
 
                                         </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Log Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($log as $r)
+                                    <tr>
+                                        <td>{{ $r->log }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -91,6 +115,9 @@
                     });
                 }
             });
+        });
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
         });
     </script>
 

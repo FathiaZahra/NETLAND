@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('nama_informasi',225)->nullable(false);
             $table->text('isi_informasi')->nullable(false);
             $table->text('file')->nullable(true);
-            $table->timestamps(false);
 
             //foreign key
             // $table->foreign('id_pengelola')

@@ -3,16 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Informasi;
+use App\Models\Log;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class InformasiController extends Controller
 {
-    public function index()
+    public function index(Informasi $info, Log $log)
+    {
+        // $data = Informasi::all();
+        $data = [
+            'informasi' => $info->all(),
+            'log' => $log->all()
+        ];
+        return view('Pengelola.informasi', $data);
+    }
+
+
+    public function unduhPdf(Informasi $info)
     {
         $data = Informasi::all();
-        return view('Pengelola.informasi', ['informasi' => $data]);
+    	$pdf = PDF::loadview('Pengelola.unduh',['informasi'=>$data]);
+    	return $pdf->download('laporan-informasi.pdf');
     }
 
     public function create()
@@ -36,12 +50,13 @@ class InformasiController extends Controller
             $foto_file->move(public_path('foto_informasi'), $foto_nama);
             $data['file'] = $foto_nama;
         }
+        $createData = $info->create($data);
 
-        if ($info->create($data)) {
-            return redirect('/dashboard/informasi')->with('success', 'Data surat baru berhasil ditambah');
+        if ($createData) {
+            return redirect('/dashboard/informasi')->with('success', 'Data Informasi baru berhasil ditambah');
         }
 
-        return back()->with('error', 'Data surat gagal ditambahkan');
+        return back()->with('error', 'Data Informasi gagal ditambahkan');
     }
 
     public function edit(Informasi $info, string $id)
@@ -81,10 +96,10 @@ class InformasiController extends Controller
             $dataUpdate = $info->where('id_informasi', $id_informasi)->update($data);
 
             if ($dataUpdate) {
-                return redirect('/dashboard/informasi')->with('success', 'Data surat berhasil diupdate');
+                return redirect('/dashboard/informasi')->with('success', 'Data Informasi berhasil diupdate');
             }
 
-            return back()->with('error', 'Data jenis surat gagal diupdate');
+            return back()->with('error', 'Data Informasi gagal diupdate');
         }
     }
 

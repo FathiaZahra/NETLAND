@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="mt-3 d-flex">
                                     <button type="submit" class="btn btn-primary mr-2">SIMPAN</button>
-                                    <a href="#" onclick="window.history.back();" class="btn btn-success">KEMBALI</a>
+                                    <a href="#" onclick="window.history.back();" style="margin-left: 10px;" class="btn btn-success">KEMBALI</a>
                                 </div>
                             </div>
                         </div>

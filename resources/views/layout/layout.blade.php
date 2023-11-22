@@ -296,6 +296,9 @@ body {
   </div>
 </nav>
 <div class="container mt-3">@yield('content')@include('layout.flash-message')
+                  <button class="nav-toggle">
+                      <span class="toggle--icon"></span>
+                  </button></div>
     <button class="nav-toggle">
         <span class="toggle--icon"></span>
     </button></div>
