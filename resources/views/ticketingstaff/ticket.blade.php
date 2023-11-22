@@ -18,6 +18,7 @@
 
                         </div>
                         <p>
+                            <a href="/dashboard/ticket/unduh" class="btn btn-primary" target="_blank">CETAK PDF</a>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
