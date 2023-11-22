@@ -9,7 +9,7 @@ class Informasi extends Model
 {
     use HasFactory;
     protected $table = 'informasi';
-    protected $fillable = ['id_pengelola','nama_informasi','isi_informasi','file'];
+    protected $fillable = ['nama_informasi','isi_informasi','file'];
     protected $primaryKey = 'id_informasi';
     public $timestamps = false;
 

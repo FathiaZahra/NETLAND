@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akomodasi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -13,6 +14,13 @@ class AkomodasiController extends Controller
     {
         $data = Akomodasi::all();
         return view('Pengelola.akomodasi', ['akomodasi' => $data]);
+    }
+
+    public function unduhPdf(Akomodasi $info)
+    {
+        $data = Akomodasi::all();
+    	$pdf = PDF::loadview('Pengelola.unduhAkomodasi',['akomodasi'=>$data]);
+    	return $pdf->download('laporan-akomodasi.pdf');
     }
 
     public function create()
@@ -40,10 +48,10 @@ class AkomodasiController extends Controller
         $createData = $info->create($data);
 
         if ($createData) {
-            return redirect('/dashboard/akomodasi')->with('success', 'Data surat baru berhasil ditambah');
+            return redirect('/dashboard/akomodasi')->with('success', 'Data akomodasi baru berhasil ditambah');
         }
 
-        return back()->with('error', 'Data surat gagal ditambahkan');
+        return back()->with('error', 'Data akomodasi gagal ditambahkan');
     }
 
     public function edit(Akomodasi $info, string $id)
@@ -83,10 +91,10 @@ class AkomodasiController extends Controller
             $dataUpdate = $info->where('id_akomodasi', $id_akomodasi)->update($data);
 
             if ($dataUpdate) {
-                return redirect('/dashboard/akomodasi')->with('success', 'Data surat berhasil diupdate');
+                return redirect('/dashboard/akomodasi')->with('success', 'Data akomodasi berhasil diupdate');
             }
 
-            return back()->with('error', 'Data jenis surat gagal diupdate');
+            return back()->with('error', 'Data akomodasi gagal diupdate');
         }
     }
 

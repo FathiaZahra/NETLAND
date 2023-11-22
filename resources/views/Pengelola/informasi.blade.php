@@ -13,9 +13,11 @@
                     <div class="row">
                         <div class="col-mr-10 ">
                             <a href="informasi/tambah">
-                                <button style="margin-left: 970px;"class="btn btn-success my-3">Tambah Informasi</button>
+                                <button style="margin-left: 960px;"class="btn btn-success my-3">Tambah Informasi</button>
                             </a>
+                            <a href="/dashboard/informasi/unduh" style="margin-bottom: 10px;" class="btn btn-primary" target="_blank">CETAK PDF</a>
                         </div>
+                        
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>

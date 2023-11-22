@@ -260,10 +260,6 @@ body {
                       <img src="/../foto/logo.png">
                       <span class="logo-text">NETLAND</span>
                   </a>
-                  @include('layout.flash-message')
-                  <button class="nav-toggle">
-                      <span class="toggle--icon"></span>
-                  </button>
               </section>
               <section class="header-content--right">
                   <nav class="header-nav" role="navigation">
@@ -302,7 +298,10 @@ body {
       </header>
   </div>
 </nav>
-<div class="container mt-3">@yield('content')</div>
+<div class="container mt-3">@yield('content')@include('layout.flash-message')
+                  <button class="nav-toggle">
+                      <span class="toggle--icon"></span>
+                  </button></div>
   </body>
   <script>
     const container = document.querySelector(".container");

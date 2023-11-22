@@ -2,19 +2,20 @@
 @section('title', 'Peminjaman')
 @section('content')
     <div>
-        <div class="col-md-12">
-        <span class="h1">
+            <div class="col-md-12">
+            <span class="h1">
                         Data Akomodasi
-                    </span>
-            <div>
+            </span>
+                <div>
                 <div class="card-header">
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-mr-10">
                             <a href="akomodasi/tambah">
-                                <button style="margin-left: 1000px;" class="btn btn-success my-3">Tambah Akomodasi</button>
+                                <button style="margin-left: 950px;" class="btn btn-success my-3">Tambah Akomodasi</button>
                             </a>
+                            <a href="/dashboard/akomodasi/unduh"  style="margin-bottom: 10px;" class="btn btn-primary" target="_blank">CETAK PDF</a>
                         </div>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
