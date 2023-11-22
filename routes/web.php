@@ -30,6 +30,7 @@ Route::get('/', function () {
    ->group(function () {
     Route::get('/ticket', [TicketController::class, 'index']);
     Route::get('/ticket/detail/{id}',[TicketController::class,'detail']);
+    Route::get('/ticket/unduh',[TicketController::class,'unduhPdf']);  
     Route::get('/ticket/tambah',[TicketController::class,'create'])->name('tambahTicket');
     Route::post('/ticket/simpan',[TicketController::class,'store'])->name('simpanTicket');
     Route::get('/ticket/edit/{id}',[TicketController::class,'edit']);
@@ -43,7 +44,7 @@ Route::get('/', function () {
     ->group(function(){
     Route::get('/peminjaman',[PeminjamanController::class,'index'])->name('listPeminjaman');
     Route::get('/peminjaman/detail/{id}',[PeminjamanController::class,'detail']);
-    Route::get('/unduh',[PeminjamanController::class,'unduhPdf']);    
+    Route::get('/peminjaman/unduh',[PeminjamanController::class,'unduhPdf']);    
     Route::get('/peminjaman/tambah',[PeminjamanController::class,'create'])->name('tambahPeminjaman');
     Route::post('/peminjaman/simpan',[PeminjamanController::class,'store'])->name('simpanPeminjaman');
     Route::get('/peminjaman/edit/{id}',[PeminjamanController::class,'edit'])->name('editPeminjaman');

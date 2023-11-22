@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Log;
 use App\Models\Ticket;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -18,6 +19,13 @@ class TicketController extends Controller
             'log' => $log->all()
         ];
         return view('ticketingstaff.ticket', $data);
+    }
+
+    public function unduhPdf(Ticket $ticket)
+    {
+        $data = Ticket::all();
+    	$pdf = PDF::loadview('ticketingstaff.unduh',['ticket'=>$data]);
+    	return $pdf->download('laporan-ticket.pdf');
     }
 
     public function create()
