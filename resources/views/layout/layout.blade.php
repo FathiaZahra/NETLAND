@@ -260,14 +260,11 @@ body {
                       <img src="/../foto/logo.png">
                       <span class="logo-text">NETLAND</span>
                   </a>
-                  @include('layout.flash-message')
-                  <button class="nav-toggle">
-                      <span class="toggle--icon"></span>
-                  </button>
               </section>
               <section class="header-content--right">
                   <nav class="header-nav" role="navigation">
                       <ul class="nav__list" aria-expanded="false">
+
                           <li class="list-item">
                               <a class="nav__link" href="#">Beranda</a>
                           </li>
@@ -292,17 +289,16 @@ body {
                             </a>
                         </li>
                       </ul><br>
-                      <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                   </nav>
               </section>
           </div>
       </header>
   </div>
 </nav>
-<div class="container mt-3">@yield('content')</div>
+<div class="container mt-3">@yield('content')@include('layout.flash-message')
+    <button class="nav-toggle">
+        <span class="toggle--icon"></span>
+    </button></div>
   </body>
   <script>
     const container = document.querySelector(".container");

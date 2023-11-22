@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Log;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -10,10 +11,11 @@ use Illuminate\Support\Facades\File;
 
 class PeminjamanController extends Controller
 {
-    public function index(Barang $barang)
+    public function index(Barang $barang, Log $log)
     {
         $data = [
             'barang' => $barang->all(),
+            'log' => $log->all()
         ];
         // dd($data);
         return view('peminjaman.index', $data);
