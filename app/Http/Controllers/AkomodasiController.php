@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akomodasi;
+use App\Models\Log;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -10,10 +11,14 @@ use Illuminate\Http\Request;
 
 class AkomodasiController extends Controller
 {
-    public function index()
+    public function index(Akomodasi $info, Log $log)
     {
-        $data = Akomodasi::all();
-        return view('Pengelola.akomodasi', ['akomodasi' => $data]);
+        // $data = Akomodasi::all();
+        $data = [
+            'akomodasi' => $info->all(),
+            'log' => $log->all()
+        ];
+        return view('Pengelola.akomodasi', $data);
     }
 
     public function unduhPdf(Akomodasi $info)

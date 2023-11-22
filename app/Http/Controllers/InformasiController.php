@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Informasi;
+use App\Models\Log;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -10,10 +11,14 @@ use Illuminate\Http\Request;
 
 class InformasiController extends Controller
 {
-    public function index()
+    public function index(Informasi $info, Log $log)
     {
-        $data = Informasi::all();
-        return view('Pengelola.informasi', ['informasi' => $data]);
+        // $data = Informasi::all();
+        $data = [
+            'informasi' => $info->all(),
+            'log' => $log->all()
+        ];
+        return view('Pengelola.informasi', $data);
     }
 
 
