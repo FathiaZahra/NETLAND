@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -9,10 +10,14 @@ use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
-    public function index()
+    public function index(Ticket $ticket, Log $log)
     {
-        $data = Ticket::all();
-        return view('ticketingstaff.ticket', ['ticket' => $data]);
+        // $data = []Ticket::all();
+        $data = [
+            'ticket' => $ticket->all(),
+            'log' => $log->all()
+        ];
+        return view('ticketingstaff.ticket', $data);
     }
 
     public function create()

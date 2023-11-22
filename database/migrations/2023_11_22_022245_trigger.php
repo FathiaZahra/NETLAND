@@ -30,6 +30,26 @@ return new class extends Migration
                 ));
             END'
         );
+
+
+        DB::unprepared('DROP TRIGGER IF EXISTS  insertTicket');
+        DB::unprepared(
+            'CREATE TRIGGER  insertTicket AFTER INSERT ON ticket
+            FOR EACH ROW
+            BEGIN
+                DECLARE aktor VARCHAR(200);
+                SELECT username INTO aktor FROM akun WHERE id_akun = 3;
+
+                INSERT INTO log (log)
+                VALUES (CONCAT(
+                    COALESCE(aktor, ""),
+                    " memesan tiket pada tanggal ",
+                    COALESCE(new.tanggal_pemesanan, ""),
+                    " dengan jumlah ",
+                    COALESCE(new.jumlah_ticket, "")
+                ));
+            END'
+        );
     }
 
     /**
@@ -38,6 +58,7 @@ return new class extends Migration
     public function down(): void
     {
         // DROP Trigger on Rollback
-        DB::unprepared('DROP TRIGGER IF EXISTS insertBarang'); //
+        DB::unprepared('DROP TRIGGER IF EXISTS insertBarang');
+        DB::unprepared('DROP TRIGGER IF EXISTS insertTicket');
     }
 };
