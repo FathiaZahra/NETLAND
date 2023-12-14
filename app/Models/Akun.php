@@ -14,7 +14,7 @@ class Akun extends Authenticatable
     protected $primaryKey = 'id_akun';
     public $timestamps = false;
 
-    public function akun(){
-        return $this->hasMany(akun::class, 'id_akun');
-    }
+    // public function akun(){
+    //     return $this->hasMany(akun::class, 'id_akun');
+    // }
 }

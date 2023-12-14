@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -12,62 +13,37 @@ class AuthController extends Controller
      */
     public function index()
     {
-        // if(!Auth::user()):
-        //     return view('login.login');
-        // else:
-        //     if(Auth::user()->role == 'pengelola'):
-        //         return redirect()->to('/dashboard');
-        //     else:
-        //         return redirect()->to('/kasir/dashboard');
-        //     endif;
-        // endif;
+        return view('login.login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login(Request $request)
     {
-        //
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $userRole = Auth::user()->role;
+
+            if ($userRole == 'super_admin') {
+                return redirect()->to('/');
+            } elseif ($userRole == 'pengelola') {
+                return redirect()->to('/dashboard/informasi');
+            } elseif ($userRole == 'staff_ticketing') {
+                return redirect()->to('/dashboard/ticket');
+            } elseif ($userRole == 'staff_penyewaan') {
+                return redirect()->to('/dashboard/peminjaman');
+            }
+        }
+
+        return redirect()->to('/');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logout()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Auth $auth)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Auth $auth)
-    {
-        //
+        Auth::logout();
+        Session::regenerateToken();
+        return redirect('/');
     }
 }

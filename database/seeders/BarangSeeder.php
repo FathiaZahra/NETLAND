@@ -21,6 +21,13 @@ class BarangSeeder extends Seeder
                 'harga_barang' => 20000,
                 'stok_barang' => 10,
                 'pembayaran_sewabarang' => 20000,
+            ],
+
+            [
+                'nama_barang' => 'kompor',
+                'harga_barang' => 90000,
+                'stok_barang' => 18,
+                'pembayaran_sewabarang' => 90000,
             ]
         ];
 

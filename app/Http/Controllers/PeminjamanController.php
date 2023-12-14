@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Models\Log;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
@@ -13,9 +14,12 @@ class PeminjamanController extends Controller
 {
     public function index(Barang $barang, Log $log)
     {
+        $totalBarang = DB::select('SELECT CountTotalBarang() AS totalBarang')[0]->totalBarang;
+
         $data = [
             'barang' => $barang->all(),
-            'log' => $log->all()
+            'log' => $log->all(),
+            'jumlahBarang' => $totalBarang
         ];
         // dd($data);
         return view('peminjaman.index', $data);
