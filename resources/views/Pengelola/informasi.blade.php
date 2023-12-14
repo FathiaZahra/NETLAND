@@ -7,7 +7,7 @@
                         Data Informasi
                     </span>
             <div>
-                <div class="card-header">
+                {{-- <div class="card-header"> --}}
                 </div>
                 <div class="card-body">
                     <div class="row">

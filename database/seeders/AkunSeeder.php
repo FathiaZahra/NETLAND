@@ -16,24 +16,24 @@ class AkunSeeder extends Seeder
     {
         $userData = [
             [
-                'username' => 'super_admin',
+                'username' => 'super',
                 'role' => 'super_admin',
-                'password' => Hash::make('super_admin')
+                'password' => Hash::make('123')
             ],
             [
                 'username' => 'pengelola',
                 'role' => 'pengelola',
-                'password' => Hash::make('git')
+                'password' => Hash::make('123')
             ],
             [
-                'username' => 'staff_ticketing',
+                'username' => 'ticketing',
                 'role' => 'staff_ticketing',
-                'password' => Hash::make('staff_ticketing')
+                'password' => Hash::make('123')
             ],
             [
-                'username' => 'staff_penyewaan',
+                'username' => 'penyewaan',
                 'role' => 'staff_penyewaan',
-                'password' => Hash::make('staff_penyewaan')
+                'password' => Hash::make('123')
             ]
         ];
 

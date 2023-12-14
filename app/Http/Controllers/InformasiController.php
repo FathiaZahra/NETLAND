@@ -18,6 +18,7 @@ class InformasiController extends Controller
             'informasi' => $info->all(),
             'log' => $log->all()
         ];
+        
         return view('Pengelola.informasi', $data);
     }
 
