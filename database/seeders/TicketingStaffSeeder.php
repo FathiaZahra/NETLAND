@@ -16,7 +16,19 @@ class TicketingStaffSeeder extends Seeder
         $userData = [
             [
                 'id_akun' => 3,
-                'nama_ticketingstaff' => 'nama'
+                'nama_ticketingstaff' => 'erlia'
+            ],
+            [
+                'id_akun' => 3,
+                'nama_ticketingstaff' => 'fathia'
+            ],
+            [
+                'id_akun' => 3,
+                'nama_ticketingstaff' => 'kesya'
+            ],
+            [
+                'id_akun' => 3,
+                'nama_ticketingstaff' => 'nia'
             ]
         ];
 

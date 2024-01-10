@@ -22,6 +22,18 @@ return new class extends Migration
             RETURN total;
         END
         ');
+
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalTicket');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalTicket() RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM ticket;
+            RETURN total;
+        END
+        ');
+
     }
 
     /**

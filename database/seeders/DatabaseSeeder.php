@@ -8,6 +8,8 @@ use App\Models\Akomodasi;
 use App\Models\Akun;
 use App\Models\Informasi;
 use App\Models\Pengunjung;
+use App\Models\PenyewaanStaff;
+use App\Models\TicketingStaff;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PenyewaanStaffSeeder::class);
         $this->call(PeminjamanSeeder::class);
         $this->call(BarangSeeder::class);
+        $this->call(TicketingStaffSeeder::class);
         $this->call(InformasiSeeder::class);
         $this->call(AkomodasiSeeder::class);
     }
