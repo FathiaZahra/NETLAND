@@ -54,11 +54,10 @@ class PeminjamanController extends Controller
             $data['file'] = $foto_nama;
         }
         //Proses Insert
-        if ($barang->create($data)) {
-            return redirect('/dashboard/peminjaman')->with('success', 'Data Barang Berhasil Ditambah');
+        if (DB::statement("CALL CreateBarang(?,?,?,?,?)", [$data['nama_barang'], $data['harga_barang'], $data['stok_barang'], $data['pembayaran_sewabarang'], $data['file']])) {
+            return redirect('/dashboard/peminjaman')->with('success', 'Data Barang Baru Berhasil Ditambah');
         }
-        //Kembali ke form tambah data
-        return back()->with('error', 'Data Barang gagal ditambahkan');
+        return back()->with('error','Barang Gagal Ditambahkan');
     }
 
     /**
