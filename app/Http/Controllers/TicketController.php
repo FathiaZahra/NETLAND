@@ -8,15 +8,19 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
     public function index(Ticket $ticket, Log $log)
     {
         // $data = []Ticket::all();
+        $totalTicket = DB::select('SELECT CountTotalTicket() AS totalTicket')[0]->totalTicket;
+
         $data = [
             'ticket' => $ticket->all(),
-            'log' => $log->all()
+            'log' => $log->all(),
+            'jumlahTicket' => $totalTicket
         ];
         return view('ticketingstaff.ticket', $data);
     }

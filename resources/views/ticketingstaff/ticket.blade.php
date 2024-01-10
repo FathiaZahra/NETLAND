@@ -1,12 +1,15 @@
 @extends('layout.layout')
 @section('title', 'Tiket')
 @section('content')
-    <div class="row">
+    <div>
         <div class="col-md-12">
             <span class="h1">
                 Data Tiket
             </span>
             <div>
+                <span class="h5">
+                    Jumlah Ticket Yang Tercatat : {{$jumlahTicket}}
+                </span>
                 <div class="card-header">
                 </div>
                 <div class="card-body">

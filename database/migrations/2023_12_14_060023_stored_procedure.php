@@ -28,6 +28,23 @@ return new class extends Migration
         
         
         ");
+
+        DB::unprepared('DROP Procedure IF EXISTS CreateTicket');
+        DB::unprepared("
+        CREATE PROCEDURE CreateTicket(
+            IN new_tanggal_pemesanan DATE,
+            IN new_jumlah_ticket INT,
+            IN new_harga_ticket DECIMAL,
+            IN new_pembayaran_ticket INT,
+            IN new_file TEXT
+        )
+        BEGIN
+            INSERT INTO ticket (tanggal_pemesanan, jumlah_ticket, harga_ticket, pembayaran_ticket, file)
+            VALUES (new_tanggal_pemesanan, new_jumlah_ticket, new_harga_ticket, new_pembayaran_ticket, new_file); 
+        END
+        
+        
+        ");
     }
 
     /**
