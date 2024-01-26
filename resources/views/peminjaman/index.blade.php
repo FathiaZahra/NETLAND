@@ -10,7 +10,7 @@
                 Jumlah Barang Yang Tercatat : {{$jumlahBarang}}
             </span>
             <div >
-                <div>
+                <div> 
         
                 </div>
                 <div class="card-body">
