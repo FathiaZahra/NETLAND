@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_barang', 60)->nullable(false);
             $table->decimal('harga_barang')->nullable(false);
             $table->integer('stok_barang')->nullable(false);
-            $table->integer('pembayaran_sewabarang')->nullable(false);
+            $table->string('pembayaran_sewabarang')->nullable(false);
             $table->text('file')->nullable(true);
             $table->timestamps();
 

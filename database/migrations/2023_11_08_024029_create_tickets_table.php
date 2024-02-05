@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('tanggal_pemesanan')->nullable(false)->default('2023-01-01');
             $table->integer('jumlah_ticket')->nullable(false);
             $table->decimal('harga_ticket');
-            $table->integer('pembayaran_ticket')->nullable(false);
+            $table->string('pembayaran_ticket')->nullable(false);
             $table->text('file')->nullable(true);
             $table->timestamps();
 
