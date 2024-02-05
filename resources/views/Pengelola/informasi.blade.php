@@ -7,6 +7,9 @@
                         Data Informasi
                     </span>
             <div>
+                <span class="h5">
+                    Jumlah Informasi Yang Tercatat : {{$jumlahInformasi}}
+                </span>
                 {{-- <div class="card-header"> --}}
                 </div>
                 <div class="card-body">

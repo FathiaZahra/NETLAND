@@ -8,15 +8,18 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AkomodasiController extends Controller
 {
     public function index(Akomodasi $info, Log $log)
     {
-        // $data = Akomodasi::all();
+        $totalAkomodasi = DB::select('SELECT CountTotalAkomodasi() AS totalAkomodasi')[0]->totalAkomodasi;
+
         $data = [
             'akomodasi' => $info->all(),
-            'log' => $log->all()
+            'log' => $log->all(),
+            'jumlahAkomodasi' => $totalAkomodasi
         ];
         return view('Pengelola.akomodasi', $data);
     }

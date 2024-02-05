@@ -34,6 +34,30 @@ return new class extends Migration
         END
         ');
 
+
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalInformasi');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalInformasi() RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM informasi;
+            RETURN total;
+        END
+        ');
+
+
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalAkomodasi');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalAkomodasi() RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM akomodasi;
+            RETURN total;
+        END
+        ');
+
     }
 
     /**

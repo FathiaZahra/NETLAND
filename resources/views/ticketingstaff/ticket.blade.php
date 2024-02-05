@@ -10,7 +10,7 @@
                 <span class="h5">
                     Jumlah Ticket Yang Tercatat : {{$jumlahTicket}}
                 </span>
-                <div class="card-header">
+                
                 </div>
                 <div class="card-body">
                     <div class="row">

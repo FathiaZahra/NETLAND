@@ -7,7 +7,10 @@
                         Data Akomodasi
             </span>
                 <div>
-                <div class="card-header">
+                    <span class="h5">
+                        Jumlah Akomodasi Yang Tercatat : {{$jumlahAkomodasi}}
+                    </span>
+                <div >
                 </div>
                 <div class="card-body">
                     <div class="row">

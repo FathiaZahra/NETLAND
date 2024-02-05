@@ -23,7 +23,7 @@
                     <a href="#"><span class="fa fa-home"></span> Beranda</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:8000/dashboard/informasi"><span  class="fa-solid fa-circle-info"></span>Informasi</a>
+                    <a href="http://127.0.0.1:8000/dashboard/informasi"><span class="fa-solid fa-circle-info"></span>Informasi</a>
                 </li>
                 <li>
                     <a href="http://127.0.0.1:8000/dashboard/akomodasi"><span
@@ -48,7 +48,7 @@
         </nav>
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="content" style="background:#fff">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     
@@ -61,7 +61,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                    
+{{--                     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
@@ -77,7 +77,7 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </nav>
             @yield('content')

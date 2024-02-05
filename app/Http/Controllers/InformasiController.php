@@ -8,15 +8,18 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InformasiController extends Controller
 {
     public function index(Informasi $info, Log $log)
     {
-        // $data = Informasi::all();
+        $totalInformasi = DB::select('SELECT CountTotalInformasi() AS totalInformasi')[0]->totalInformasi;
+
         $data = [
             'informasi' => $info->all(),
-            'log' => $log->all()
+            'log' => $log->all(),
+            'jumlahInformasi' => $totalInformasi
         ];
         
         return view('Pengelola.informasi', $data);

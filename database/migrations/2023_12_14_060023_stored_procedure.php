@@ -45,6 +45,38 @@ return new class extends Migration
         
         
         ");
+
+        DB::unprepared('DROP Procedure IF EXISTS CreateInformasi');
+        DB::unprepared("
+        CREATE PROCEDURE CreateInformasi(
+            IN new_nama_informasi VARCHAR(60),
+            IN new_isi_informasi TEXT,
+            IN new_file TEXT
+        )
+        BEGIN
+            INSERT INTO informasi (nama_informasi, isi_informasi, file)
+            VALUES (new_nama_informasi, new_isi_informasi, new_file); 
+        END
+        
+        
+        ");
+
+
+        DB::unprepared('DROP Procedure IF EXISTS CreateAkomodasi');
+        DB::unprepared("
+        CREATE PROCEDURE CreateAkomodasi(
+            IN new_nama_akomodasi VARCHAR(60),
+            IN new_isi_akomodasi VARCHAR(60),
+            IN new_file TEXT
+        )
+        BEGIN
+            INSERT INTO akomodasi (nama_akomodasi, isi_akomodasi, file)
+            VALUES (new_nama_akomodasi, new_isi_akomodasi, new_file); 
+        END
+        
+        
+        ");
+
     }
 
     /**
