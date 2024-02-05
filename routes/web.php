@@ -4,9 +4,10 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\AkomodasiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\TicketController;
-use App\Models\Informasi;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,7 +82,7 @@ Route::prefix('dashboard')
     });
 
 Route::get('/logout', [AuthController::class, 'logout']);
-    
+Route::get('/dashboard', [Dashboard::class, 'index']);
 // });
 
 // Route::prefix('dashboard')->group(function () {
