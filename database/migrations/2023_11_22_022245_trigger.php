@@ -57,7 +57,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 DECLARE aktor VARCHAR(200);
-                SELECT username INTO aktor FROM akun WHERE id_akun = 3;
+                SELECT username INTO aktor FROM akun WHERE id_akun = 2;
 
                 INSERT INTO log (log)
                 VALUES (CONCAT(
@@ -74,7 +74,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 DECLARE aktor VARCHAR(200);
-                SELECT username INTO aktor FROM akun WHERE id_akun = 3;
+                SELECT username INTO aktor FROM akun WHERE id_akun = 2;
 
                 INSERT INTO log (log)
                 VALUES (CONCAT(

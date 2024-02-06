@@ -74,7 +74,7 @@ return new class extends Migration
             VALUES (new_nama_akomodasi, new_isi_akomodasi, new_file); 
         END
         
-        
+
         ");
 
     }
