@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('title', 'Peminjaman')
 @section('content')
-  <div id="content" style="background: #D4E2D4">
+  <div id="content">
     <h1 style="padding-left: 50px">DASHBOARD</h1>
     <div class="container">
         <div class="row text-center justify-content-center">
