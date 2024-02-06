@@ -1,6 +1,7 @@
 @extends('layout.layout')
 @section('title', 'Peminjaman')
 @section('content')
+  <div id="content" style="background: #D4E2D4">
     <h1 style="padding-left: 50px">DASHBOARD</h1>
     <div class="container">
         <div class="row text-center justify-content-center">
@@ -46,6 +47,7 @@
         </div>
     </div>
     </div>
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" crossorigin="anonymous"></script> --}}
