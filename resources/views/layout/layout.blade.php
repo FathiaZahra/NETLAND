@@ -44,6 +44,10 @@
                                 style="color: #ffffff;"></span>Peminjaman</a>
                     </li>
                 @endif
+                <li>
+                    <a href="http://127.0.0.1:8000"><span class="fa-solid fa-right-from-bracket"
+                            style="color: #ffffff;" class="mb-100"></span>LogOut</a>
+                </li>
             </ul>
 
         </nav>
