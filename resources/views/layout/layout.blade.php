@@ -66,7 +66,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Home</a>
@@ -81,7 +81,7 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                         </ul>
-                    </div> 
+                    </div>  --}}
                 </div>
             </nav>
             @yield('content')
