@@ -50,8 +50,6 @@ return new class extends Migration
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalAkomodasi');
 
         DB::unprepared('
-        CREATE FUNCTION CountTotalAkomodasi() RETURNS INT
-
         CREATE FUNCTION CountAkomodasi() RETURNS INT
         BEGIN
             DECLARE total INT;
