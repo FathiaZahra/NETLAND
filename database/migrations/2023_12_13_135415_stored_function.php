@@ -51,11 +51,14 @@ return new class extends Migration
 
         DB::unprepared('
         CREATE FUNCTION CountTotalAkomodasi() RETURNS INT
+
+        CREATE FUNCTION CountAkomodasi() RETURNS INT
         BEGIN
             DECLARE total INT;
             SELECT COUNT(*) INTO total FROM akomodasi;
             RETURN total;
         END
+
         ');
 
     }
