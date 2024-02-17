@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label>Pembayaran</label>
                                     {{-- <input type="text" class="form-control" name="pembayaran_sewabarang" /> --}}
-                                    <select class="form-control" name="pembayaran_sewabarang">
+                                    <select class="form-control" name="pembayaran_ticket">
                                         <option value="qris">Qris</option>
                                         {{-- <option value="credit_card">Kartu Kredit</option> --}}
                                         <option value="bank_transfer">Transfer Bank</option>

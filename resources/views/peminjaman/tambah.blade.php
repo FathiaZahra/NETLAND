@@ -14,8 +14,11 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label>Nama Barang</label>
-                                <input type="text" class="form-control" name="nama_barang" />
+                                <label for="validationServer" class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" name="nama_barang" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required />
+                                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                                    Please choose a username.
+                                  </div>
                                 {{-- @foreach ($Barang as $barang)
                                     <option value="{{$Barang->id_barang}}">
                                     {{ $Barang->barang }}

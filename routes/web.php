@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\TicketController;
-
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +41,7 @@ Route::prefix('dashboard')
         Route::get('/ticket/edit/{id}', [TicketController::class, 'edit']);
         Route::post('/ticket/edit/simpan', [TicketController::class, 'update'])->name('simpanEditTicket');
         Route::delete('/ticket/hapus', [TicketController::class, 'destroy'])->name('hapusTicket');
+        Route::delete('/informasi/hapus', [InformasiController::class, 'destroy']);
     });
 
 // PEMINJAMAN
@@ -83,6 +84,7 @@ Route::prefix('dashboard')
 
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/dashboard', [Dashboard::class, 'index']);
+Route::get('/logs', [TransaksiController::class, 'index']);
 // });
 
 // Route::prefix('dashboard')->group(function () {
