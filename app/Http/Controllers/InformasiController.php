@@ -17,7 +17,7 @@ class InformasiController extends Controller
         $totalInformasi = DB::select('SELECT CountTotalInformasi() AS totalInformasi')[0]->totalInformasi;
 
         $data = [
-            'informasi' => $info->all(),
+            'informasi' => DB::table('view_informasi')->get(),
             'log' => $log->all(),
             'jumlahInformasi' => $totalInformasi
         ];

@@ -17,7 +17,7 @@ class PeminjamanController extends Controller
         $totalBarang = DB::select('SELECT CountTotalBarang() AS totalBarang')[0]->totalBarang;
 
         $data = [
-            'barang' => $barang->all(),
+            'barang' => DB::table('view_barang')->get(),
             'log' => $log->all(),
             'jumlahBarang' => $totalBarang
         ];

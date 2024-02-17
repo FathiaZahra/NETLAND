@@ -17,7 +17,7 @@ class AkomodasiController extends Controller
         $totalAkomodasi = DB::select('SELECT CountTotalAkomodasi() AS totalAkomodasi')[0]->totalAkomodasi;
 
         $data = [
-            'akomodasi' => $info->all(),
+            'akomodasi' => DB::table('view_akomodasi')->get(),
             'log' => $log->all(),
             'jumlahAkomodasi' => $totalAkomodasi
         ];

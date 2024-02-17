@@ -18,7 +18,7 @@ class TicketController extends Controller
         $totalTicket = DB::select('SELECT CountTotalTicket() AS totalTicket')[0]->totalTicket;
 
         $data = [
-            'ticket' => $ticket->all(),
+            'ticket' => DB::table('view_staffticketing')->get(),
             'log' => $log->all(),
             'jumlahTicket' => $totalTicket
         ];
