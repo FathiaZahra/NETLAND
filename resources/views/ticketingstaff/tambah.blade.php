@@ -28,8 +28,13 @@
                                     <input type="decimal" class="form-control" name="harga_ticket" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Pembayaran tiket</label>
-                                    <input type="text" name="pembayaran_ticket" class="form-control" />
+                                    <label>Pembayaran</label>
+                                    {{-- <input type="text" class="form-control" name="pembayaran_sewabarang" /> --}}
+                                    <select class="form-control" name="pembayaran_ticket">
+                                        <option value="qris">Qris</option>
+                                        {{-- <option value="credit_card">Kartu Kredit</option> --}}
+                                        <option value="bank_transfer">Transfer Bank</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>File</label>
