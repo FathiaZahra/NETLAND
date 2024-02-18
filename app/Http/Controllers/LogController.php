@@ -10,9 +10,14 @@ class LogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Log $log)
     {
-        //
+        $data = [
+        		"logs" => $log->all()
+        ];
+        
+        // ni bakal error samain ke folder lu
+        return view('history.history', $data);
     }
 
     /**
