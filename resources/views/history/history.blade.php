@@ -16,15 +16,9 @@
                     @csrf
                     <div class="row">
                         <div class="col-12">
-                                @foreach ($transaksi as $tx)
+                                @foreach ($logs as $data)
                                 <div class="card" style="padding:10px;">
-                                    <span class="h3">Tabel : {{ $tx->tabel }}</span>
-                                    <div>
-                                        <span>Tanggal : {{ $tx->tanggal }}</span>
-                                        <span>Waktu : {{ $tx->jam }}</span>
-                                        <span>Aksi : {{ $tx->aksi }}</span>
-                                        <span>Status : {{ $tx->record }}</span>
-                                    </div>
+                                    <span>Log : {{ $data->log }}</span>
                                 </div>
                                 <br> 
                                 @endforeach
