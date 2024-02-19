@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title','Tambah Barang')
+@section('title','content')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -16,7 +16,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-12">
-                                @foreach ($logs as $data)
+                                @foreach ($log as $data)
                                 <div class="card" style="padding:10px;">
                                     <span>Log : {{ $data->log }}</span>
                                 </div>

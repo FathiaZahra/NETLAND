@@ -13,7 +13,7 @@ class LogController extends Controller
     public function index(Log $log)
     {
         $data = [
-        		"logs" => $log->all()
+        		"log" => $log->all()
         ];
         
         // ni bakal error samain ke folder lu
