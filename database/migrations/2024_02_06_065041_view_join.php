@@ -38,15 +38,17 @@ return new class extends Migration
 
         DB::unprepared('DROP VIEW IF EXISTS view_staffticketing');
         DB::unprepared(
-        "CREATE VIEW view_staffticketing AS
+            "CREATE VIEW view_staffticketing AS
             SELECT
                 id_ticket,
                 jumlah_ticket,
                 harga_ticket,
                 pembayaran_ticket,
+                tanggal_pemesanan,
                 file
         FROM ticket
-        ");
+        "
+        );
 
         DB::unprepared('DROP VIEW IF EXISTS view_akomodasi');
         DB::unprepared(
