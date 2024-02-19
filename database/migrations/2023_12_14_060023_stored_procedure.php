@@ -13,120 +13,120 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared("DROP PROCEDURE IF EXISTS CreateBarang");
-DB::unprepared("
-    CREATE PROCEDURE CreateBarang(
-        IN new_nama_barang VARCHAR(60),
-        IN new_harga_barang DECIMAL,
-        IN new_stok_barang INT,
-        IN new_pembayaran_sewabarang INT,
-        IN new_file TEXT
-    )
-    BEGIN
-        DECLARE pesan_error CHAR(5) DEFAULT '00000';
-
+        DB::unprepared("
+        CREATE PROCEDURE CreateBarang(
+            IN new_nama_barang VARCHAR(60),
+            IN new_harga_barang DECIMAL,
+            IN new_stok_barang INT,
+            IN new_pembayaran_sewabarang INT,
+            IN new_file TEXT
+        )
         BEGIN
-            GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
-        END;
+            DECLARE pesan_error CHAR(5) DEFAULT '00000';
 
-        START TRANSACTION;
-        SAVEPOINT satu;
+            BEGIN
+                GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
+            END;
 
-        INSERT INTO barang (nama_barang, harga_barang, stok_barang, pembayaran_sewabarang, file)
-        VALUES (new_nama_barang, new_harga_barang, new_stok_barang, new_pembayaran_sewabarang, new_file); 
+            START TRANSACTION;
+            SAVEPOINT satu;
 
-        IF pesan_error != '00000' THEN
-            ROLLBACK TO satu;
-        END IF;
+            INSERT INTO barang (nama_barang, harga_barang, stok_barang, pembayaran_sewabarang, file)
+            VALUES (new_nama_barang, new_harga_barang, new_stok_barang, new_pembayaran_sewabarang, new_file); 
 
-        COMMIT;
-    END
-");
+            IF pesan_error != '00000' THEN
+                ROLLBACK TO satu;
+            END IF;
 
-DB::unprepared("DROP PROCEDURE IF EXISTS CreateTicket");
-DB::unprepared("
-    CREATE PROCEDURE CreateTicket(
-        IN new_tanggal_pemesanan DATE,
-        IN new_jumlah_ticket INT,
-        IN new_harga_ticket DECIMAL,
-        IN new_pembayaran_ticket INT,
-        IN new_file TEXT
-    )
-    BEGIN
-        DECLARE pesan_error CHAR(5) DEFAULT '00000';
+            COMMIT;
+        END
+    ");
 
+    DB::unprepared("DROP PROCEDURE IF EXISTS CreateTicket");
+    DB::unprepared("
+        CREATE PROCEDURE CreateTicket(
+            IN new_tanggal_pemesanan DATE,
+            IN new_jumlah_ticket INT,
+            IN new_harga_ticket DECIMAL,
+            IN new_pembayaran_ticket INT,
+            IN new_file TEXT
+        )
         BEGIN
-            GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
-        END;
+            DECLARE pesan_error CHAR(5) DEFAULT '00000';
 
-        START TRANSACTION;
-        SAVEPOINT satu;
+            BEGIN
+                GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
+            END;
 
-        INSERT INTO ticket (tanggal_pemesanan, jumlah_ticket, harga_ticket, pembayaran_ticket, file)
-        VALUES (new_tanggal_pemesanan, new_jumlah_ticket, new_harga_ticket, new_pembayaran_ticket, new_file); 
+            START TRANSACTION;
+            SAVEPOINT satu;
 
-        IF pesan_error != '00000' THEN
-            ROLLBACK TO satu;
-        END IF;
+            INSERT INTO ticket (tanggal_pemesanan, jumlah_ticket, harga_ticket, pembayaran_ticket, file)
+            VALUES (new_tanggal_pemesanan, new_jumlah_ticket, new_harga_ticket, new_pembayaran_ticket, new_file); 
 
-        COMMIT;
-    END
-");
+            IF pesan_error != '00000' THEN
+                ROLLBACK TO satu;
+            END IF;
 
-DB::unprepared("DROP PROCEDURE IF EXISTS CreateInformasi");
-DB::unprepared("
-    CREATE PROCEDURE CreateInformasi(
-        IN new_nama_informasi VARCHAR(60),
-        IN new_isi_informasi TEXT,
-        IN new_file TEXT
-    )
-    BEGIN
-        DECLARE pesan_error CHAR(5) DEFAULT '00000';
+            COMMIT;
+        END
+    ");
 
+    DB::unprepared("DROP PROCEDURE IF EXISTS CreateInformasi");
+    DB::unprepared("
+        CREATE PROCEDURE CreateInformasi(
+            IN new_nama_informasi VARCHAR(60),
+            IN new_isi_informasi TEXT,
+            IN new_file TEXT
+        )
         BEGIN
-            GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
-        END;
+            DECLARE pesan_error CHAR(5) DEFAULT '00000';
 
-        START TRANSACTION;
-        SAVEPOINT satu;
+            BEGIN
+                GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
+            END;
 
-        INSERT INTO informasi (nama_informasi, isi_informasi, file)
-        VALUES (new_nama_informasi, new_isi_informasi, new_file); 
+            START TRANSACTION;
+            SAVEPOINT satu;
 
-        IF pesan_error != '00000' THEN
-            ROLLBACK TO satu;
-        END IF;
+            INSERT INTO informasi (nama_informasi, isi_informasi, file)
+            VALUES (new_nama_informasi, new_isi_informasi, new_file); 
 
-        COMMIT;
-    END
-");
+            IF pesan_error != '00000' THEN
+                ROLLBACK TO satu;
+            END IF;
 
-DB::unprepared("DROP PROCEDURE IF EXISTS CreateAkomodasi");
-DB::unprepared("
-    CREATE PROCEDURE CreateAkomodasi(
-        IN new_nama_akomodasi VARCHAR(60),
-        IN new_isi_akomodasi VARCHAR(60),
-        IN new_file TEXT
-    )
-    BEGIN
-        DECLARE pesan_error CHAR(5) DEFAULT '00000';
+            COMMIT;
+        END
+    ");
 
+    DB::unprepared("DROP PROCEDURE IF EXISTS CreateAkomodasi");
+    DB::unprepared("
+        CREATE PROCEDURE CreateAkomodasi(
+            IN new_nama_akomodasi VARCHAR(60),
+            IN new_isi_akomodasi VARCHAR(60),
+            IN new_file TEXT
+        )
         BEGIN
-            GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
-        END;
+            DECLARE pesan_error CHAR(5) DEFAULT '00000';
 
-        START TRANSACTION;
-        SAVEPOINT satu;
+            BEGIN
+                GET DIAGNOSTICS CONDITION 1 pesan_error = RETURNED_SQLSTATE;
+            END;
 
-        INSERT INTO akomodasi (nama_akomodasi, isi_akomodasi, file)
-        VALUES (new_nama_akomodasi, new_isi_akomodasi, new_file); 
+            START TRANSACTION;
+            SAVEPOINT satu;
 
-        IF pesan_error != '00000' THEN
-            ROLLBACK TO satu;
-        END IF;
+            INSERT INTO akomodasi (nama_akomodasi, isi_akomodasi, file)
+            VALUES (new_nama_akomodasi, new_isi_akomodasi, new_file); 
 
-        COMMIT;
-    END
-");
+            IF pesan_error != '00000' THEN
+                ROLLBACK TO satu;
+            END IF;
+
+            COMMIT;
+        END
+    ");
 
     }
 
