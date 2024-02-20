@@ -11,7 +11,9 @@
 			font-size: 9pt;
 		}
 	</style>
- 
+
+
+    <h3 class="text-center">Data Tiket Report</h3>
 	<table class='table table-bordered'>
 		<thead>
             <tr>
