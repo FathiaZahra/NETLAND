@@ -8,6 +8,7 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -85,6 +86,14 @@ Route::prefix('dashboard')
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/dashboard', [Dashboard::class, 'index']);
 Route::get('/logs', [TransaksiController::class, 'index']);
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('storage:link');
+    return redirect('/');
+}); 
+
 // });
 
 // Route::prefix('dashboard')->group(function () {
