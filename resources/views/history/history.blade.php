@@ -1,34 +1,4 @@
 @extends('layout.layout')
-<<<<<<< HEAD
-@section('title','content')
-@section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div>
-            <div class="card-header">
-                <span class="h1">
-                    History
-                </span>
-                <hr>
-            </div>
-            <br>
-            <div class="card-body">
-                <form method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                                @foreach ($log as $data)
-                                <div class="card" style="padding:10px;">
-                                    <span>Log : {{ $data->log }}</span>
-                                </div>
-                                <br> 
-                                @endforeach
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-=======
 @section('title', 'History')
 @section('content')
     <div class="row">
@@ -54,8 +24,6 @@
                                             </div>
                                         @endif
                                     @endif
->>>>>>> a91ddb220990bf4769c4223f5a1d213762c71812
-
                                     @if (Auth::user()->role == 'staff_ticketing')
                                         @if (!Str::startsWith($data->log, 'pengelola') && !Str::startsWith($data->log, 'penyewaan'))
                                             <div class="card" style="padding:10px;">
