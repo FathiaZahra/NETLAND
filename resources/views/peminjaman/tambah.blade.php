@@ -35,12 +35,12 @@
                                 </select>
                             <div class="form-group">
                                 <label>Pembayaran</label>
-                                {{-- <input type="text" class="form-control" name="pembayaran_sewabarang" /> --}}
-                                <select class="form-control" name="pembayaran_sewabarang">
+                                <input type="text" class="form-control" name="pembayaran_sewabarang" />
+                                {{-- <select class="form-control" name="pembayaran_sewabarang">
                                     <option value="qris">Qris</option>
-                                    {{-- <option value="credit_card">Kartu Kredit</option> --}}
-                                    <option value="bank_transfer">Transfer Bank</option>
-                                </select>
+                                    <option value="credit_card">Kartu Kredit</option>
+                                    <option value="transfer">Transfer Bank</option>
+                                </select> --}}
                             </div>
                             <div class="form-group">
                                 <label>Foto Barang</label>

@@ -15,8 +15,6 @@ class BarangSeeder extends Seeder
     {
         $userData = [
             [
-                // 'id_peminjaman' => 1,
-                // 'id_pengunjung' => 3,
                 'nama_barang' => 'karpet',
                 'harga_barang' => 20000,
                 'stok_barang' => 10,

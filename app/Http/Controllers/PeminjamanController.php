@@ -27,9 +27,35 @@ class PeminjamanController extends Controller
 
     public function unduhPdf(Barang $barang)
     {
-        $barang = Barang::all();
-    	$pdf = PDF::loadview('peminjaman.unduh',['barang'=>$barang]);
-    	return $pdf->download('laporan-barang.pdf');
+        // $barang = Barang::all();
+    	// $pdf = PDF::loadview('peminjaman.unduh',['barang'=>$barang]);
+    	// return $pdf->stream('laporan-unduh.pdf');
+        $barang = Barang::findOrFail($barang);
+        
+        // Mengambil path gambar dari direktori storage atau direktori publik, sesuaikan dengan kebutuhan Anda
+        $imagePath = public_path('foto/logo.png');            
+        $signImage = public_path('foto/logo.png');
+    
+        // Membaca file gambar dan mengonversi ke base64
+        $base64Image = base64_encode(File::get($imagePath));
+        $base64SignImage = base64_encode(File::get($signImage));
+
+
+        // Load view dengan data SK Belum Menikah dan base64 gambar
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
+                    ->loadView('peminjaman.unduh', [
+                        'barang' => $barang,
+                        'base64Image' => $base64Image,
+                        'signImage' => $base64SignImage,
+                    ]);
+    
+        // Jika Anda ingin menampilkan PDF di browser tanpa mengunduhnya, gunakan method 'stream' 
+        // return $pdf->stream('unduh-laporan.pdf');
+    
+        // Jika Anda ingin mengunduh PDF, gunakan method 'download'
+        return $pdf->download('laporan-barang.pdf' . $barang . '.pdf');
+        
+        
     }
 
     public function create()

@@ -24,7 +24,6 @@
                                             </div>
                                         @endif
                                     @endif
-
                                     @if (Auth::user()->role == 'staff_ticketing')
                                         @if (!Str::startsWith($data->log, 'pengelola') && !Str::startsWith($data->log, 'penyewaan'))
                                             <div class="card" style="padding:10px;">
