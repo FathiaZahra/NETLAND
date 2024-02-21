@@ -22,6 +22,7 @@
                 <th>Jumlah Tiket</th>
                 <th>Harga Tiket</th>
                 <th>Pembayaran Tiket</th>
+                <th>Foto Tiket</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,11 @@
                 <td>{{ $i->jumlah_ticket }}</td>
                 <td>{{ $i->harga_ticket }}</td>
                 <td>{{ $i->pembayaran_ticket }}</td>
+                <td>
+                    @if(!empty($imageDataArray[$loop->index]))
+                        <img src="{{$imageDataArray[$loop->index]['src']}}" alt="{{$imageDataArray[$loop->index]['alt']}}" width="100px" style="height: auto">
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

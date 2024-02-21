@@ -28,8 +28,17 @@ class TicketController extends Controller
     public function unduhPdf(Ticket $ticket)
     {
         $data = Ticket::all();
-    	$pdf = PDF::loadview('ticketingstaff.unduh',['ticket'=>$data]);
-    	return $pdf->download('laporan-ticket.pdf');
+        $imageDataArray = [];
+        foreach($data as $ticket){
+            if($ticket->file){
+                $imageData = base64_encode(file_get_contents(public_path('foto'). '/' . $ticket->file));
+                $imageSrc = 'data:image/' . pathinfo($ticket->file, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+
+                $imageDataArray[] = ['src' => $imageSrc, 'alt' => 'foto'];
+            }
+        }
+    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('ticketingstaff.unduh',['ticket'=>$data, 'imageDataArray' => $imageDataArray]);
+    	return $pdf->stream('laporan-ticket.pdf');
     }
 
     public function create()

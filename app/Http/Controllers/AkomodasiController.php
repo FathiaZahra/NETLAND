@@ -27,8 +27,17 @@ class AkomodasiController extends Controller
     public function unduhPdf(Akomodasi $info)
     {
         $data = Akomodasi::all();
-    	$pdf = PDF::loadview('Pengelola.unduhAkomodasi',['akomodasi'=>$data]);
-    	return $pdf->download('laporan-akomodasi.pdf');
+        $imageDataArray = [];
+        foreach($data as $info){
+            if($info->file){
+                $imageData = base64_encode(file_get_contents(public_path('foto_akomodasi'). '/' . $info->file));
+                $imageSrc = 'data:image/' . pathinfo($info->file, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+
+                $imageDataArray[] = ['src' => $imageSrc, 'alt' => 'foto'];
+            }
+        }
+    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('Pengelola.unduhAkomodasi',['akomodasi'=>$data,'imageDataArray'=>$imageDataArray]);
+    	return $pdf->stream('laporan-akomodasi.pdf');
     }
 
     public function create()

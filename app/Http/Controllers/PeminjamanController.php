@@ -27,31 +27,18 @@ class PeminjamanController extends Controller
 
     public function unduhPdf(Barang $barang)
     {
-        $barang = Barang::all();
-    	$pdf = PDF::loadview('peminjaman.unduh',['barang'=>$barang]);
-    	return $pdf->download('laporan-barang.pdf');
+        $data = Barang::all();
+        $imageDataArray = [];
+        foreach($data as $barang){
+            if($barang->file){
+                $imageData = base64_encode(file_get_contents(public_path('foto'). '/' . $barang->file));
+                $imageSrc = 'data:image/' . pathinfo($barang->file, PATHINFO_EXTENSION) . ';base64,' . $imageData;
 
-        // $barang = Barang::findOrFail($barang);
-        // Mengambil path gambar dari direktori storage atau direktori publik, sesuaikan dengan kebutuhan Anda
-        // $imagePath = public_path('foto/logo.png');            
-    
-        // Membaca file gambar dan mengonversi ke base64
-        // $base64Image = base64_encode(File::get($imagePath));
-
-        // Load view dengan data SK Belum Menikah dan base64 gambar
-        // $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])
-        //             ->loadView('peminjaman.unduh', [
-        //                 'barang' => $barang,
-        //                 'base64Image' => $base64Image,
-        //             ]);
-    
-        // Jika Anda ingin menampilkan PDF di browser tanpa mengunduhnya, gunakan method 'stream' 
-        // return $pdf->stream('unduh-laporan.pdf');
-    
-        // Jika Anda ingin mengunduh PDF, gunakan method 'download'
-        // return $pdf->stream('laporan-barang.pdf' . $barang . '.pdf');
-        
-        
+                $imageDataArray[] = ['src' => $imageSrc, 'alt' => 'foto'];
+            }
+        }
+    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('peminjaman.unduh',['barang'=>$data, 'imageDataArray'=>$imageDataArray]);
+    	return $pdf->stream('laporan-barang.pdf');
     }
 
     public function create()
@@ -71,7 +58,7 @@ class PeminjamanController extends Controller
         ]);
         if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $foto_file = $request->file('file');
-            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_nama = base64_encode($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
             $foto_file->move(public_path('foto'), $foto_nama);
             $data['file'] = $foto_nama;
         }

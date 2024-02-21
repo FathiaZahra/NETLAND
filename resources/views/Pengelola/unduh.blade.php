@@ -17,6 +17,7 @@
                 <th>No</th>
                 <th>Nama Informasi</th>
                 <th>Isi Informasi</th>
+                <th>Foto Informasi</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,11 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{ $i->nama_informasi }}</td>
                 <td>{{ $i->isi_informasi }}</td>
+                <td>
+                    @if(!empty($imageDataArray[$loop->index]))
+                        <img src="{{$imageDataArray[$loop->index]['src']}}" alt="{{$imageDataArray[$loop->index]['alt']}}" width="100px" style="height: auto">
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>

@@ -29,8 +29,17 @@ class InformasiController extends Controller
     public function unduhPdf(Informasi $info)
     {
         $data = Informasi::all();
-    	$pdf = PDF::loadview('Pengelola.unduh',['informasi'=>$data]);
-    	return $pdf->download('laporan-informasi.pdf');
+        $imageDataArray = [];
+        foreach($data as $info){
+            if($info->file){
+                $imageData = base64_encode(file_get_contents(public_path('foto_informasi'). '/' . $info->file));
+                $imageSrc = 'data:image/' . pathinfo($info->file, PATHINFO_EXTENSION) . ';base64,' . $imageData;
+
+                $imageDataArray[] = ['src' => $imageSrc, 'alt' => 'foto'];
+            }
+        }
+    	$pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadview('Pengelola.unduh',['informasi'=>$data, 'imageDataArray'=>$imageDataArray]);
+    	return $pdf->stream('laporan-informasi.pdf');
     }
 
     public function create()
