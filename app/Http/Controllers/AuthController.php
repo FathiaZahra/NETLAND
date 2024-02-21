@@ -13,31 +13,59 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('login.login');
-    }
+        if (!Auth::check()) {
+            return view('login.login');
+        }
+        $user = Auth::user(['role']);
+        $redirectMap = [
+            'pengelola' => 'dashboard/informasi',
+            'staff_ticketing' => 'dashboard/ticket',
+            'staff_penyewaan' => 'dashboard/peminjaman'
+        ];
+
+        if (isset($redirectMap[$user->role])) {
+            return redirect($redirectMap[$user->role]);
+        }
+}
+
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required'],
+        $validatedData = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ], [
+            'username.required' => 'Username harus diisi',
+            'password.required' => 'Password harus diisi',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $userRole = Auth::user()->role;
+        $credentials = [
+            'username' => $validatedData['username'],
+            'password' => $validatedData['password'],
+        ];
 
-            if ($userRole == 'super_admin') {
-                return redirect()->to('/');
-            } elseif ($userRole == 'pengelola') {
-                return redirect()->to('/dashboard/informasi');
-            } elseif ($userRole == 'staff_ticketing') {
-                return redirect()->to('/dashboard/ticket');
-            } elseif ($userRole == 'staff_penyewaan') {
-                return redirect()->to('/dashboard/peminjaman');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user(['role']);
+            Session::regenerateToken();
+            $redirectMap = [
+                'pengelola' => 'dashboard/informasi',
+                'staff_ticketing' => 'dashboard/ticket',
+                'staff_penyewaan' => 'dashboard/peminjaman'
+            ];
+
+            if (isset($redirectMap[$user->role])) {
+
+                return redirect($redirectMap[$user->role]);
+            }
+            else {
+                return response([
+                    'success' => false
+                ], 401);
             }
         }
 
-        return redirect()->to('/');
+        Session::regenerateToken();
+        return redirect()->back()->withInput();
     }
 
     public function logout()

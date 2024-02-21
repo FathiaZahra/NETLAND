@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akun;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +35,7 @@ class AkunController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            // Session::regenerate();
+            Session::regenerate();
             if ($user->role == 'staff_penyewaan') {
                 return redirect('dashboard/peminjaman');
             } elseif ($user->role == 'staff_ticketing') {
@@ -44,6 +45,7 @@ class AkunController extends Controller
     }
     public function logout()
     {
+        
         Akun::logout();
         return redirect('/login');
     }

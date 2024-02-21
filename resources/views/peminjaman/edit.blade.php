@@ -32,13 +32,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Pembayaran Sewa</label>
-                                    {{-- <input type="text" class="form-control" name="pembayaran_sewabarang"
-                                    value="{{ $barang->pembayaran_sewabarang }}" />                                 --}}
-                                    <select class="form-control" name="pembayaran_sewabarang">
+                                    <input type="text" class="form-control" name="pembayaran_sewabarang"
+                                    value="{{ $barang->pembayaran_sewabarang }}" />                
+                                    {{-- <select class="form-control" name="pembayaran_sewabarang">
                                         <option value="qris">Qris</option>
-                                        {{-- <option value="credit_card">Kartu Kredit</option> --}}
+                                        <option value="credit_card">Kartu Kredit</option>
                                         <option value="bank_transfer">Transfer Bank</option>
-                                    </select>
+                                    </select> --}}
                                 </div>
                                 <div class="form-group">
                                     <label>File</label>
